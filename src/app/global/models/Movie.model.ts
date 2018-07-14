@@ -1,4 +1,4 @@
-import { MovieGender } from './MovieGender';
+import { MovieGender } from './MovieGender.model';
 
 export class Movie {
   public constructor(

@@ -1,5 +1,5 @@
-import { MovieGender } from './MovieGender';
-import { Movie } from './Movie';
+import { MovieGender } from './MovieGender.model';
+import { Movie } from './Movie.model';
 
 export class User {
   public constructor(
