@@ -6,8 +6,16 @@ import { UserRatesComponent } from './user-rates/user-rates.component';
 import { UserChartComponent } from './user-chart/user-chart.component';
 import { ProfileRoutingModule } from './user-profile-routing.module';
 import { ChartsModule } from 'ng2-charts';
+import { ModalModule } from 'ngx-bootstrap';
+import { FormsModule } from '../../../../node_modules/@angular/forms';
 @NgModule({
-  imports: [CommonModule, ProfileRoutingModule, ChartsModule],
+  imports: [
+    CommonModule,
+    ProfileRoutingModule,
+    ChartsModule,
+    ModalModule.forRoot(),
+    FormsModule
+  ],
   declarations: [
     UserProfileComponent,
     UserDetailsComponent,
