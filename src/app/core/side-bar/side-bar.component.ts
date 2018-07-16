@@ -17,8 +17,8 @@ export class SideBarComponent implements OnInit {
 
   public constructor(private router: Router) {
     this._menuItems = [
-      { title: 'Trending', icon: 'fas fa-chart-line', path: 'trending' },
-      { title: 'Recommend me', icon: 'fas fa-user', path: 'recomendation' },
+      { title: 'Trending', icon: 'fas fa-chart-line', path: 'movies' },
+      { title: 'Recommend me', icon: 'fas fa-user', path: 'movies' },
       { title: 'Settings', icon: 'fas fa-cogs', path: 'user' }
     ];
     this._year = new Date().getFullYear();

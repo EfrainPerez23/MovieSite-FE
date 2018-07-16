@@ -6,6 +6,10 @@ const routes: Routes = [
     path: 'user',
     loadChildren:
       './components/user-profile/user-profile.module#UserProfileModule'
+  },
+  {
+    path: 'movies',
+    loadChildren: './components/movies/movies.module#MoviesModule'
   }
 ];
 
