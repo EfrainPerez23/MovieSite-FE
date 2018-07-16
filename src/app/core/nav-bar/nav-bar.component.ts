@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchbarService } from '../../searchbar.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,13 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-
   private _active: boolean;
+  searchText: string;
 
-  public constructor() { }
+  public constructor(private searchService: SearchbarService) {}
 
-  public ngOnInit(): void {
-  }
+  public ngOnInit(): void {}
 
   public get active(): boolean {
     return this._active;
@@ -22,4 +22,7 @@ export class NavBarComponent implements OnInit {
     this._active = _active;
   }
 
+  public updateSearch(_searchText: string) {
+    this.searchService.searchText.next(_searchText);
+  }
 }

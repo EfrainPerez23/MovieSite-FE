@@ -1,17 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Movie } from 'src/app/global/models/Movie.model';
+import { SearchbarService } from '../../searchbar.service';
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss']
 })
-export class MoviesComponent implements OnInit {
+export class MoviesComponent implements OnInit, OnDestroy {
   movies: Movie[] = [];
-  constructor() {}
+  searchText: string;
 
-  ngOnInit() {
+  public constructor(private searchService: SearchbarService) {
+    this.searchService.searchText.subscribe(val => {
+      this.searchText = val;
+    });
+  }
+
+  public ngOnInit(): void {
     this.loadMovies();
+  }
+
+  ngOnDestroy(): void {
+    this.searchService.searchText.unsubscribe();
   }
 
   loadMovies() {
