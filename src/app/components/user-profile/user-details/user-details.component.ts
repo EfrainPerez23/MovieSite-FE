@@ -1,9 +1,8 @@
-
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { UserService } from '../../../user.service';
-import { LocalStorageService } from '../../../global/service/local-storage.service';
+// import { LocalStorageService } from '../../../global/service/local-storage.service';
 import { User } from '../../../global/models/User.model';
 
 @Component({
@@ -11,29 +10,30 @@ import { User } from '../../../global/models/User.model';
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.scss']
 })
-
 export class UserDetailsComponent implements OnInit {
   modalRef: BsModalRef;
   available = true;
   cUsername: string;
-  private _authenticated: {token: string | null, user: User | null} | null = { token: '', user: null };
+  private _authenticated: { token: string | null; user: User | null } | null = {
+    token: '',
+    user: null
+  };
 
   constructor(
     private modalService: BsModalService,
-    private userService: UserService,
-    private localStorageService: LocalStorageService
+    private userService: UserService
   ) {}
 
   public ngOnInit(): void {
-    this._authenticated.token = this.localStorageService.getItem('token') ? this.localStorageService.getItem('token') : '';
-    this._authenticated.user = this.localStorageService.getItem('user') ? JSON.parse(this.localStorageService.getItem('user')) : null;
+    // this._authenticated.token = this.localStorageService.getItem('token') ? this.localStorageService.getItem('token') : '';
+    // this._authenticated.user = this.localStorageService.getItem('user') ? JSON.parse(this.localStorageService.getItem('user')) : null;
   }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
 
-  public get user(): {token: string | null, user: User | null} | null {
+  public get user(): { token: string | null; user: User | null } | null {
     return this._authenticated;
   }
 

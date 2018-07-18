@@ -3,13 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { MovieProfileComponent } from './components/movie-profile/movie-profile.component';
 import { AppComponent } from './app.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { AuthComponent } from './auth/auth/auth.component';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent},
   { path: 'movie/:id', component: MovieProfileComponent},
-  { path: 'user', component: UserProfileComponent},
-  { path: 'auth', component: AuthComponent },
+  { path: 'user', component: UserProfileComponent}
 ];
 
 @NgModule({

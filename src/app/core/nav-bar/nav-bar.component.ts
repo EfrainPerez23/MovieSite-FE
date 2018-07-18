@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { SearchbarService } from '../../searchbar.service';
 import { LocalStorageService } from '../../global/service/local-storage.service';
 import { User } from '../../global/models/User.model';
 import { AuthService } from '../../auth/auth.service';
+=======
+>>>>>>> parent of e78e122... added login and signup behavior
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,6 +14,7 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class NavBarComponent implements OnInit {
   private _active: boolean;
+<<<<<<< HEAD
   searchText: string;
 
   private _authenticated: { token: string | null; user: User | null } | null = {
@@ -36,6 +40,10 @@ export class NavBarComponent implements OnInit {
       }
     );
   }
+=======
+
+  public constructor() { }
+>>>>>>> parent of e78e122... added login and signup behavior
 
   public ngOnInit(): void {}
 
@@ -47,6 +55,7 @@ export class NavBarComponent implements OnInit {
     this._active = _active;
   }
 
+<<<<<<< HEAD
   public updateSearch(_searchText: string) {
     this.searchService.searchText.next(_searchText);
   }
@@ -62,4 +71,6 @@ export class NavBarComponent implements OnInit {
   } | null {
     return this._authenticated;
   }
+=======
+>>>>>>> parent of e78e122... added login and signup behavior
 }
