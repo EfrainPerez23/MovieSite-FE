@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from '../../global/service/local-storage.service';
-import { User } from '../../global/models/User';
+import { SearchbarService } from '../../searchbar.service';
+// import { LocalStorageService } from '../../global/service/local-storage.service';
+import { User } from '../../global/models/User.model';
 import { AuthService } from '../../auth/auth.service';
 
 @Component({
@@ -9,23 +10,26 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-
   private _active: boolean;
-  private _authenticated: {token: string | null, user: User | null} | null = { token: '', user: null };
+  searchText: string;
 
-  public constructor(private localStorageService: LocalStorageService, private authService: AuthService) {
-    this._authenticated.token = this.localStorageService.getItem('token');
-    this._authenticated.user = JSON.parse(this.localStorageService.getItem('user'));
+  private _authenticated: { token: string | null; user: User | null } | null = {
+    token: '',
+    user: null
+  };
 
-    this.authService.isAuthenticated().subscribe((_identity: {token: string | null, user: User | null} | null): void => {
-      if (_identity) {
-        this._authenticated = _identity;
-      }
-    });
+  public constructor(
+    // private localStorageService: LocalStorageService,
+    private authService: AuthService,
+    private searchService: SearchbarService
+  ) {
+    // this._authenticated.token = this.localStorageService.getItem('token');
+    // this._authenticated.user = JSON.parse(this.localStorageService.getItem('user'));
+    // tslint:disable-next-line:max-line-length
+    // this.authService.isAuthenticated().subscribe((_identity: { token: string | null; user: User | null } | null): void => {if (_identity) {this._authenticated = _identity;}});
   }
 
-  public ngOnInit(): void {
-  }
+  public ngOnInit(): void {}
 
   public get active(): boolean {
     return this._active;
@@ -35,13 +39,19 @@ export class NavBarComponent implements OnInit {
     this._active = _active;
   }
 
+  public updateSearch(_searchText: string) {
+    this.searchService.searchText.next(_searchText);
+  }
+
   public logOut(): void {
-    this.localStorageService.clearLocalStorage();
+    // this.localStorageService.clearLocalStorage();
     location.reload();
   }
 
-  public get authenticated(): {token: string | null, user: User | null} | null {
+  public get authenticated(): {
+    token: string | null;
+    user: User | null;
+  } | null {
     return this._authenticated;
   }
-
 }

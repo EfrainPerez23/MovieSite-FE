@@ -1,12 +1,12 @@
-import { MovieGender } from './MovieGender';
-import { Movie } from './Movie';
+import { MovieGender } from './MovieGender.model';
+import { Movie } from './Movie.model';
 
 export class User {
   public constructor(
     private _id: number,
     private _name: string,
     private _lastName: string,
-    private _password: string = null,
+    private _password: string,
     private _email: string,
     private _movieGender: Array<MovieGender>,
     private _movie: Array<Movie>
