@@ -3,15 +3,21 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { AppRoutingModule } from './app-routing.module';
-import { SearchbarService } from './searchbar.service';
-import { FormsModule } from '@angular/forms';
-import { MoviesService } from './movies.service';
+
+import { ComponentsModule } from './components/components.module';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, CoreModule, AppRoutingModule, FormsModule],
-  providers: [SearchbarService, MoviesService],
+  imports: [
+    BrowserModule,
+    CoreModule,
+    ComponentsModule,
+    HttpClientModule,
+    AuthModule
+  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -8,6 +8,7 @@
       </div>
       <input type="text" class="form-control" placeholder="Search" aria-label="Search" (keyup)="updateSearch($event.target.value)"
         (focus)="active = true" (blur)="active = false">
+      <button type="button" class="btn btn-danger log--out" (click)="logOut()" *ngIf="authenticated.token">Log out</button>
     </div>
   </form>
 </nav>
