@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { SearchbarService } from '../../searchbar.service';
-import { LocalStorageService } from '../../global/service/local-storage.service';
+// import { LocalStorageService } from '../../global/service/local-storage.service';
 import { User } from '../../global/models/User.model';
 import { AuthService } from '../../auth/auth.service';
-=======
->>>>>>> parent of e78e122... added login and signup behavior
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,7 +11,6 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class NavBarComponent implements OnInit {
   private _active: boolean;
-<<<<<<< HEAD
   searchText: string;
 
   private _authenticated: { token: string | null; user: User | null } | null = {
@@ -23,27 +19,15 @@ export class NavBarComponent implements OnInit {
   };
 
   public constructor(
-    private localStorageService: LocalStorageService,
+    // private localStorageService: LocalStorageService,
     private authService: AuthService,
     private searchService: SearchbarService
   ) {
-    this._authenticated.token = this.localStorageService.getItem('token');
-    this._authenticated.user = JSON.parse(
-      this.localStorageService.getItem('user')
-    );
-
-    this.authService.isAuthenticated().subscribe(
-      (_identity: { token: string | null; user: User | null } | null): void => {
-        if (_identity) {
-          this._authenticated = _identity;
-        }
-      }
-    );
+    // this._authenticated.token = this.localStorageService.getItem('token');
+    // this._authenticated.user = JSON.parse(this.localStorageService.getItem('user'));
+    // tslint:disable-next-line:max-line-length
+    // this.authService.isAuthenticated().subscribe((_identity: { token: string | null; user: User | null } | null): void => {if (_identity) {this._authenticated = _identity;}});
   }
-=======
-
-  public constructor() { }
->>>>>>> parent of e78e122... added login and signup behavior
 
   public ngOnInit(): void {}
 
@@ -55,13 +39,12 @@ export class NavBarComponent implements OnInit {
     this._active = _active;
   }
 
-<<<<<<< HEAD
   public updateSearch(_searchText: string) {
     this.searchService.searchText.next(_searchText);
   }
 
   public logOut(): void {
-    this.localStorageService.clearLocalStorage();
+    // this.localStorageService.clearLocalStorage();
     location.reload();
   }
 
@@ -71,6 +54,4 @@ export class NavBarComponent implements OnInit {
   } | null {
     return this._authenticated;
   }
-=======
->>>>>>> parent of e78e122... added login and signup behavior
 }
