@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieProfileComponent implements OnInit {
 
+  max: number = 5;
+  rate: number = 3;
+  isReadonly: boolean = true;
   constructor() { }
 
   ngOnInit() {
